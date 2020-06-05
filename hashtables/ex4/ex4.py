@@ -4,6 +4,14 @@ def has_negatives(a):
     """
     # Your code here
 
+    result = []
+    storage = {}
+
+    for num in a:
+        if -num in storage:
+            result.append(abs(num))
+        else:
+            storage[num] = num
     return result
 
 

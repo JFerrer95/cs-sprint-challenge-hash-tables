@@ -11,4 +11,19 @@ def reconstruct_trip(tickets, length):
     """
     # Your code here
 
+    storage = {}
+    route = [None] * length
+    for i in range(length):
+        if tickets[i].source == "NONE":
+            route[0] = tickets[i].destination
+        storage[tickets[i].source] = tickets[i].destination
+
+    for i in range(length):
+        if route[i - 1] != None:
+            route[i] = storage[route[i - 1]]
     return route
+
+tickets = [Ticket("NONE", "JFK"), Ticket("MCO", "PIT"), Ticket("JFK", "MCO"), Ticket("PIT", "NONE")] 
+
+
+print(reconstruct_trip(tickets, 4))
